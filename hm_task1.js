@@ -39,7 +39,18 @@ function profileMagazine(label, schedule = [], products, description, team = nul
     };
 
     function verifySore (store) {
-        let difference = [];
+        const mismatchedProducts = []; 
+
+        store.forEach((item) => { 
+        const stockCount = this.products.filter((product) => product === item).length; 
+        const marketCount = store.filter((product) => product === item).length; 
+        
+        if (stockCount !== marketCount){ 
+                    mismatchedProducts.push(item); 
+        } 
+        }); 
+        
+         return mismatchedProducts.join(', ');
         
     };
 
